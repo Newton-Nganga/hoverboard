@@ -16,7 +16,21 @@ for(let i = 0; i < SQUARES; i++) {
 
     // Touchend for mobile
     square.addEventListener('touchend', () => removeColor(square))
-    
+
+
+    // Touchmove for mobile (dragging)
+    square.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0]
+        const targetElement = document.elementFromPoint(touch.clientX, touch.clientY)
+        if (targetElement && targetElement.classList.contains('square')) {
+            setColor(targetElement)
+        }
+        e.preventDefault()
+    })
+
+    // Touchend for mobile (lift finger)
+    square.addEventListener('touchend', () => removeColorGradually(square))
+
     container.appendChild(square)
 }
 
