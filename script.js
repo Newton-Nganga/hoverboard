@@ -6,10 +6,17 @@ for(let i = 0; i < SQUARES; i++) {
     const square = document.createElement('div')
     square.classList.add('square')
 
+    //mouse over 
     square.addEventListener('mouseover', () => setColor(square))
-
+    // mouse out
     square.addEventListener('mouseout', () => removeColor(square))
 
+    // Touchstart for mobile
+    square.addEventListener('touchstart', () => setColor(square))
+
+    // Touchend for mobile
+    square.addEventListener('touchend', () => removeColor(square))
+    
     container.appendChild(square)
 }
 
